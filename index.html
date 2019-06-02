@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      #canvas {
+        display: block;
+        border: 1px solid #cccccc;
+        margin: 0 auto;
+      }
+    </style>
+</head>
+<body>
+  <!-- canvas的大小应该直接在标签内声明而不是css的形式而且没有单位，这是因为大小还表示画布的精度 -->
+  <canvas id="canvas" width="768" height="512"></canvas>
+</body>
+<script>
+  window.onload = () => {
+    const canvas = document.getElementById('canvas')
+    // 也可以在js中声明画布宽高
+    // canvas.width = 768
+    // canvas.height = 512
+    let context = canvas.getContext('2d')
+    // context是基于状态的，不同线条之间可能会互相影响发，为了不同线条之间样式不受影响用begin和close
+    // 开始坐标
+    context.beginPath()
+    context.moveTo(100, 100)
+    // 目的坐标，三个首尾相连刚好是一个三角形
+    context.lineTo(400, 400)
+    context.lineTo(100, 400)
+    context.lineTo(100, 100)
+    // 设置线的样式
+    context.lineWidth = 5
+    context.strokeStyle='#cccccc'
+    context.stroke()
+    context.closePath()
+    // 填充颜色
+    context.fillStyle = 'rgb(256, 0, 0)'
+    context.fill()
+    context.beginPath()
+     // 只要在再声明一次重新画
+    context.moveTo(200, 100)
+    // 目的坐标，三个首尾相连刚好是一个三角形
+    context.lineTo(400, 400)
+    context.lineTo(200, 400)
+    context.lineTo(200, 100)
+    context.strokeStyle = 'black'
+    context.stroke()
+    context.beginPath()
+    
+  }
+</script>
+</html>
