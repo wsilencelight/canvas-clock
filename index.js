@@ -28,7 +28,7 @@ window.onload = function () {
 function render (cxt) {
   // 首先把屏幕清空
   cxt.clearRect(0, 0, WIDTH, HEIGHT)
-  // 获取时间
+  // 获取时间 
   let date = new Date()
   let hours = date.getHours()
   let minutes = date.getMinutes()
